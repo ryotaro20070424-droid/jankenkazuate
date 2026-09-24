@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include<ctime>
 #include<cstdlib>
 using namespace std;
@@ -15,21 +15,12 @@ enum te
 	pa=2
 };
 
-int check(int te)
-{
-	return
-		te == gu ? gu :
-		te == tyoki ? tyoki :
-		te == pa ? pa :
-		3;
-}
-
-void aite(int ate)
+void aite(int& ate)
 {
 	ate = rand() % 3;
 }
 
-void kekka(int te, int ate)
+void ans(int te, int ate)
 {
 	cout << "結果は";
 	if (te == ate)
@@ -48,12 +39,22 @@ void kekka(int te, int ate)
 
 void jankenn()
 {
-	int te,ate;
-	const char* str[] = { "グー","チョキ","パー" };
-	cout << "じゃんけんゲーム！好きな手を選んでね" << endl << "グー：０、チョキ：１、パー：２" << endl;
-	cin >> te;
-	cout << "あなたが出したのは" << str[te] << "です。";
-	aite(ate);
-	cout << "相手が出したのは" << str[ate] << "です。";
-	kekka(te,ate);
+	int check = 0;
+	while (check==0)
+	{
+		int te, ate;
+		const char* str[] = { "グー","チョキ","パー" };
+		cout << "じゃんけんゲーム！好きな手を選んでね" << endl << "グー：０、チョキ：１、パー：２" << endl;
+		cin >> te;
+		if (te < 0 || te > 2)
+		{
+			cout << "0～2の値を入れてください" << endl;
+			continue;
+		}
+		cout << "あなたが出したのは" << str[te] << "です。";
+		aite(ate);
+		cout << "相手が出したのは" << str[ate] << "です。";
+		ans(te, ate);
+		check++;
+	}
 }

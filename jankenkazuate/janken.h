@@ -1,5 +1,3 @@
-#pragma once
+﻿#pragma once
+void jankenn();
 void initrand();
-int check(int te);
-void aite(int& ate);
-int jankenn();
